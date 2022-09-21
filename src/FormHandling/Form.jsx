@@ -1,6 +1,7 @@
 import { Component } from "react";
 
 import "./Form.css";
+import Input from "./Input";
 
 class Form extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Form extends Component {
       email: "",
       password: "",
       comment: "",
-      isChecked: false,
+      isChecked: true,
       topic: "react",
       users: [],
     };
@@ -47,49 +48,50 @@ class Form extends Component {
           ],
         };
       },
-      () => console.log(users)
+      () => console.log(this.state.users)
     );
   };
 
   render() {
     const { username, email, password, comment, isChecked, topic } = this.state;
+
+    const inputs = [
+      {
+        id: 1,
+        value: username,
+        name: "username",
+        type: "text",
+        placeholder: "Username",
+      },
+      {
+        id: 2,
+        value: password,
+        name: "password",
+        type: "password",
+        placeholder: "password",
+      },
+      {
+        id: 3,
+        value: email,
+        name: "email",
+        type: "email",
+        placeholder: "Email",
+      },
+      {
+        id: 4,
+        value: isChecked,
+        name: "isChecked",
+        type: "checkbox",
+        checked: isChecked,
+      },
+    ];
+
     return (
       <form onSubmit={this.handelSubmit}>
-        <div className="input-field">
-          <input
-            value={username}
-            onChange={this.handelInput}
-            name="username"
-            type="text"
-            placeholder="Username"
-          />
-        </div>
-        <div className="input-field">
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={this.handelInput}
-          />
-        </div>
-        <div className="input-field">
-          <input
-            value={email}
-            onChange={this.handelInput}
-            name="email"
-            type="email"
-            placeholder="Email"
-          />
-        </div>
-        <div className="input-field">
-          <input
-            type="checkbox"
-            name="isChecked"
-            value={isChecked}
-            onChange={this.handelInput}
-          />
-        </div>
+        {inputs.map((input) => (
+          <Input key={input.id} {...input} handelInput={this.handelInput} />
+        ))}
+
         <select
           style={{ height: "30px" }}
           className="input-field"
