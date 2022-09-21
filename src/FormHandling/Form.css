@@ -1,0 +1,29 @@
+.input-field {
+  max-width: 380px;
+  width: 100%;
+
+  padding: 0 0.4rem;
+  position: relative;
+  height: 45px;
+
+  margin: 15px 0;
+}
+
+.input-field input {
+  background-color: #f0f0f0;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+  height: inherit;
+  padding: 12px;
+  border-radius: 55px;
+}
+
+.input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+  font-size: 14px;
+}
